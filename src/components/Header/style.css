@@ -1,0 +1,13 @@
+.jumbotron {
+  background-image: url("https://im.indiatimes.in/content/2021/Nov/salt_618e2f31a83bc.jpg?w=2184&h=1116&cc=1");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 900px;
+  height: 450px;
+}
+
+h1,
+h3 {
+  color: white;
+  font-weight: bold;
+}
