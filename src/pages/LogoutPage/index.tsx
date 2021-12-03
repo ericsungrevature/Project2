@@ -1,6 +1,14 @@
+import Footer from "../../components/Footer";
+import LogoutForm from "../../components/LogoutForm";
+import Navbar from "../../components/Navbar";
+
 const LogoutPage = () => {
     return (
-        <div></div>
+        <div>
+            <Navbar />
+            <LogoutForm />
+            <Footer />
+        </div>
     );
 };
 

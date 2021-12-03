@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as Creators from "../../state/creators";
 
-const RegisterForm = () => {
+const LoginForm = () => {
     const [user, setUser] = useState({
         id: 0,
         username: "",
@@ -20,18 +20,21 @@ const RegisterForm = () => {
         })
     }
     function onClickHandler(event: any) {
-        //get user id from database
+        //get user info from database
         setUser({
             ...user,
-            id: 137 //placeholder value
+            id: 137,
+            firstName: "John",
+            lastName: "Smith",
+            email: "j@gmail.com"
         });
     }
     const dispatch = useDispatch();
-    const {registerCreator} = bindActionCreators(Creators, dispatch);
+    const {loginCreator} = bindActionCreators(Creators, dispatch);
     let navigate = useNavigate();
     function onSubmitHandler(event: any) {
-        event.preventDefault()
-        registerCreator(user);
+        event.preventDefault();
+        loginCreator(user);
         navigate("/");
     }
     return (
@@ -44,21 +47,9 @@ const RegisterForm = () => {
                 <label className="form-label">Password</label>
                 <input type="password" className="form-control" name="password" value={user.password} onChange={onChangeHandler} />
             </div>
-            <div className="mb-3">
-                <label className="form-label">First Name</label>
-                <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={onChangeHandler} />
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Last Name</label>
-                <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={onChangeHandler} />
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input type="email" className="form-control" name="email" value={user.email} onChange={onChangeHandler} />
-            </div>
             <button type="submit" className="btn btn-primary" onClick={onClickHandler}>Submit</button>
         </form>
     );
 };
 
-export default RegisterForm;
+export default LoginForm;

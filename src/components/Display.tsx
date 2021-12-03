@@ -6,7 +6,7 @@ const Display = () => {
     return (
         <div>
             <h1>Welcome {state.firstName} {state.lastName} ({state.id})</h1>
-            <h2>Username: {state.username}, Email: {state.email}</h2>
+            <h2>Username: {state.username}, Password: {state.password}, Email: {state.email}</h2>
         </div>
     )
 }
