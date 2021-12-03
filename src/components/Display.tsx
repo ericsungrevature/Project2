@@ -1,14 +1,14 @@
-import React from "react";
-import { useSelector } from "react-redux";
-// import reducer from '../store/reducer'
+import { useSelector } from "react-redux"
+import { RootState } from "../state/reducers"
 
 const Display = () => {
-    const id = 0;//useSelector(state => state.user.id);
+    const state = useSelector((state: RootState) => state.user);
     return (
         <div>
-            <h1>{id}</h1>
+            <h1>Welcome {state.firstName} {state.lastName} ({state.id})</h1>
+            <h2>Username: {state.username}, Email: {state.email}</h2>
         </div>
     )
-};
+}
 
 export default Display;

@@ -1,6 +1,12 @@
+import Display from "../../components/Display";
+import RegisterForm from "../../components/RegisterForm";
+
 const RegisterPage = () => {
     return (
-        <div></div>
+        <div>
+            <Display />
+            <RegisterForm />
+        </div>
     );
 };
 

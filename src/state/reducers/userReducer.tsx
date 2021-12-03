@@ -1,16 +1,11 @@
-import Actions, { ActionTypes } from "../actions";
-
-interface UserState {
-    id: number,
-    username: string,
-    password: string,
-    email: string
-};
+import Actions, { ActionTypes, UserState } from "../actions";
 
 const initialState: UserState = {
     id: 0,
     username: "",
     password: "",
+    firstName: "",
+    lastName: "",
     email: ""
 };
 
@@ -18,16 +13,18 @@ const userReducer = (state: UserState = initialState, action: Actions): UserStat
     switch(action.type) {
         case ActionTypes.LOGIN:
             console.log("Login");
-            return {
-                ...state,
-                id: state.id - action.payload
-            };
+            return action.payload;
+            // return {
+            //     ...state,
+            //     username: action.payload.username,
+            //     password: action.payload.password,
+            // };
         case ActionTypes.LOGOUT:
             console.log("Logout");
-            return {
-                ...state,
-                id: 0
-            };
+            return initialState;
+        case ActionTypes.REGISTER:
+            console.log("Register");
+            return action.payload;
         default:
             return state;
     }

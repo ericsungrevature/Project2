@@ -1,17 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import React from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Provider } from 'react-redux';
 import store from './state/store';
-import Counter from './components/Counter';
-import Display from './components/Display';
+import Router from './router';
 
 function App() {
   return (
     <Provider store={store}>
-    <div className="App">
-      <Counter />
-      <Display />
+    <div className="App text-center">
+      <Router />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
