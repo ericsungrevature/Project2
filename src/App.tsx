@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Provider } from 'react-redux';
-import store from './store';
+import store from './state/store';
 import Counter from './components/Counter';
 import Display from './components/Display';
 
