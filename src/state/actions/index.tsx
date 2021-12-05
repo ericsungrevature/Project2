@@ -1,7 +1,9 @@
 export enum ActionTypes {
     LOGIN = "LOGIN",
     LOGOUT = "LOGOUT",
-    REGISTER = "REGISTER"
+    REGISTER = "REGISTER",
+    ADDTOCART = "ADDTOCART",
+    REMOVEFROMCART = "REMOVEFROMCART"
 };
 
 export interface UserState {
@@ -12,6 +14,20 @@ export interface UserState {
     lastName: string,
     email: string
 };
+
+export interface RecipeState {
+    id: number,
+    img: string,
+    name: string,
+    description: string,
+    ingredients: string[],
+    directions: string[],
+    price: number
+}
+
+export interface CartState {
+    cart: RecipeState[]
+}
 
 interface LoginAction {
     type: ActionTypes.LOGIN,
@@ -27,6 +43,17 @@ interface RegisterAction {
     payload: UserState
 };
 
-type Actions = LoginAction | LogoutAction | RegisterAction;
+interface AddToCartAction {
+    type: ActionTypes.ADDTOCART,
+    payload: RecipeState
+}
+
+interface RemoveFromCartAction {
+    type: ActionTypes.REMOVEFROMCART,
+    payload: RecipeState
+}
+
+
+type Actions = LoginAction | LogoutAction | RegisterAction | AddToCartAction | RemoveFromCartAction;
 
 export default Actions;

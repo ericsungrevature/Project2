@@ -12,13 +12,13 @@ const LoginForm = () => {
         firstName: "",
         lastName: "",
         email: ""
-    })
+    });
     function onChangeHandler(event: any) {
         setUser({
             ...user,
             [event.target.name]: event.target.value
-        })
-    }
+        });
+    };
     function onClickHandler(event: any) {
         //get user info from database
         setUser({
@@ -28,7 +28,7 @@ const LoginForm = () => {
             lastName: "Smith",
             email: "j@gmail.com"
         });
-    }
+    };
     const dispatch = useDispatch();
     const {loginCreator} = bindActionCreators(Creators, dispatch);
     let navigate = useNavigate();
@@ -36,7 +36,7 @@ const LoginForm = () => {
         event.preventDefault();
         loginCreator(user);
         navigate("/");
-    }
+    };
     return (
         <form onSubmit={onSubmitHandler}>
             <div className="mb-3">

@@ -1,6 +1,14 @@
+import CartList from "../../components/CartList";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
+
 const CartPage = () => {
     return (
-        <div></div>
+        <div>
+            <Navbar />
+            <CartList />
+            <Footer />
+        </div>
     );
 };
 

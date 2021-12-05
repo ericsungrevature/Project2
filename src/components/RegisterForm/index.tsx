@@ -12,28 +12,28 @@ const RegisterForm = () => {
         firstName: "",
         lastName: "",
         email: ""
-    })
+    });
     function onChangeHandler(event: any) {
         setUser({
             ...user,
             [event.target.name]: event.target.value
-        })
-    }
+        });
+    };
     function onClickHandler(event: any) {
         //get user id from database
         setUser({
             ...user,
             id: 137 //placeholder value
         });
-    }
+    };
     const dispatch = useDispatch();
     const {registerCreator} = bindActionCreators(Creators, dispatch);
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     function onSubmitHandler(event: any) {
         event.preventDefault()
         registerCreator(user);
         navigate("/");
-    }
+    };
     return (
         <form onSubmit={onSubmitHandler}>
             <div className="mb-3">

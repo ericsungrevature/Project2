@@ -1,22 +1,22 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux"
-import { RootState } from "../../state/reducers"
+import { RootState } from "../../state/reducers";
 
 const LoginButton = () => {
     const state = useSelector((state: RootState) => state.user);
     if (state.username == "") {
         return <Link className="nav-link" to="/login">Login</Link>;
-    }
+    };
     return null;
-}
+};
 
 const LogoutButton = () => {
     const state = useSelector((state: RootState) => state.user);
     if (state.username != "") {
         return <Link className="nav-link" to="/logout">Logout</Link>;
-    }
+    };
     return null;
-}
+};
 
 const Navbar = () => {
     return (
@@ -37,11 +37,16 @@ const Navbar = () => {
                         <LogoutButton />
                     </li>
                     <li className="nav-item active">
-                        <a className="nav-link" href="/cart">Cart<span className="sr-only">(current)</span></a>
+                        <Link className="nav-link" to="/cart">Cart</Link>
+                        {/* <a className="nav-link" href="/cart">Cart<span className="sr-only">(current)</span></a> */}
+                    </li>
+                    <li className="nav-item active">
+                        <Link className="nav-link" to="/recipe">Recipe (not complete)</Link>
                     </li>
                 </ul>
             </div>
         </nav>
-    )
-}
+    );
+};
+
 export default Navbar;

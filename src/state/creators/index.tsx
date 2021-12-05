@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import Actions, { ActionTypes, UserState } from "../actions";
+import Actions, { ActionTypes, RecipeState, UserState } from "../actions";
 
 export const loginCreator = (user: UserState) => {
     return (dispatch: Dispatch<Actions>) => {
@@ -23,6 +23,24 @@ export const registerCreator = (user: UserState) => {
         dispatch({
             type: ActionTypes.REGISTER,
             payload: user
+        })
+    };
+};
+
+export const addToCartCreator = (recipe: RecipeState) => {
+    return (dispatch: Dispatch<Actions>) => {
+        dispatch({
+            type: ActionTypes.ADDTOCART,
+            payload: recipe
+        })
+    };
+};
+
+export const removeFromCartCreator = (recipe: RecipeState) => {
+    return (dispatch: Dispatch<Actions>) => {
+        dispatch({
+            type: ActionTypes.REMOVEFROMCART,
+            payload: recipe
         })
     };
 };
