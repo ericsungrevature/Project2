@@ -1,4 +1,3 @@
-import React from "react";
 import './Header.css';
 
 const Header = () => {
@@ -9,6 +8,7 @@ const Header = () => {
             You can cook your favorite meals at your home just like a chef!</h3>
             {/* <a className="btn btn-primary btn-lg" href="#" role="button">Start Shopping</a> */}
         </div>
-    )
-}
+    );
+};
+
 export default Header;

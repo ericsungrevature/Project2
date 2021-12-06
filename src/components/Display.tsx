@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { RootState } from "../../state/reducers"
+import { RootState } from "../state/reducers"
 
 const Display = () => {
     const state = useSelector((state: RootState) => state.user);

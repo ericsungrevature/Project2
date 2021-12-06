@@ -1,9 +1,7 @@
 import React, {useCallback, useState} from "react";
-import Dropzone from "../../components/Dropzone/index";
 import Footer from "../../components/Footer";
-// import Dropzone from "../../components/Dropzone/index";
 import Navbar from '../../components/Navbar/index';
-import "./own.css";
+import "./ownRecipe.css";
 
 const OwnRecipePage = () => {
     const [recipes, setRecipes] = useState({
@@ -54,10 +52,10 @@ const OwnRecipePage = () => {
                                     <textarea className="textarea" name="direction" value={recipes.direction} onChange={onChangeHandler} />
                                 </div>
                                 
-                                <p className="ptitle">Drag and Drop the Image</p>
+                                {/* <p className="ptitle">Drag and Drop the Image</p>
                                 <div className="content">
                                     {<Dropzone/>}
-                                </div>
+                                </div> */}
 
                                 <input type="submit" value="Register" className="btn btn-primary btn-large" />
                             </form>

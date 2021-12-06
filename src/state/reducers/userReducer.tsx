@@ -14,7 +14,11 @@ const userReducer = (state: UserState = initialState, action: Actions): UserStat
         case ActionTypes.LOGIN:
             console.log("Login");
             return action.payload;
-            
+            // return {
+            //     ...state,
+            //     username: action.payload.username,
+            //     password: action.payload.password,
+            // };
         case ActionTypes.LOGOUT:
             console.log("Logout");
             return initialState;

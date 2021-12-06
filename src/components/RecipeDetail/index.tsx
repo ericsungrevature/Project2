@@ -53,4 +53,5 @@ const RecipeDetail: React.FC<ChildComponentProps> = (props) => {
         </li>
     );
 };
+
 export default RecipeDetail;

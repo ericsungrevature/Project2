@@ -1,5 +1,3 @@
-import React from "react"
-
 const Footer = () => {
     return(
         <footer className="bg-dark text-center text-white">
@@ -7,6 +5,7 @@ const Footer = () => {
                 2021 Copyright: Team Team
             </div>
         </footer>
-    )
-}
+    );
+};
+
 export default Footer;

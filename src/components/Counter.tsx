@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as Creators from '../../state/creators/index';
-import { RootState } from '../../state/reducers/index';
+import * as Creators from "../state/creators";
+import { RootState } from "../state/reducers";
 
 const Counter = () => {
     const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const Counter = () => {
     return (
         <div>
             <h1>{state.id}</h1>
-            <button onClick={ incrementHandler } className="btn btn-primary">Increment</button>
-            <button onClick={ decrementHandler } className="btn btn-primary">Decrement</button>
+            <button onClick={ incrementHandler } className="btn btn-primary">Decrement</button>
+            <button onClick={ decrementHandler } className="btn btn-primary">Reset</button>
         </div>
     );
 };
