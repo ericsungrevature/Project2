@@ -4,7 +4,7 @@ import { RootState } from "../../state/reducers";
 
 const LoginButton = () => {
     const state = useSelector((state: RootState) => state.user);
-    if (state.username == "") {
+    if (state.username === "") {
         return <Link className="nav-link" to="/login">Login</Link>;
     };
     return null;
@@ -12,7 +12,7 @@ const LoginButton = () => {
 
 const LogoutButton = () => {
     const state = useSelector((state: RootState) => state.user);
-    if (state.username != "") {
+    if (state.username !== "") {
         return <Link className="nav-link" to="/logout">Logout</Link>;
     };
     return null;
@@ -40,9 +40,9 @@ const Navbar = () => {
                         <Link className="nav-link" to="/cart">Cart</Link>
                         {/* <a className="nav-link" href="/cart">Cart<span className="sr-only">(current)</span></a> */}
                     </li>
-                    <li className="nav-item active">
+                    {/* <li className="nav-item active">
                         <Link className="nav-link" to="/recipe">Recipe (not complete)</Link>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </nav>

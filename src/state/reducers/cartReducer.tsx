@@ -13,7 +13,7 @@ const cartReducer = ((state: CartState = initialState, action: Actions): CartSta
         case ActionTypes.REMOVEFROMCART:
             console.log("remove from cart");
             return {
-                cart: state.cart.filter(element => element.id != action.payload.id)
+                cart: state.cart.filter(element => element !== action.payload)
             };
         default:
             return state;
