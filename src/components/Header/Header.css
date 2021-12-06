@@ -6,7 +6,7 @@
   height: 450px;
 }
 
-h1,
+.jumbotron h1,
 h3 {
   color: white;
   font-weight: bold;

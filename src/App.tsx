@@ -1,12 +1,17 @@
 import React from 'react';
 import './App.css';
-import HomePage from './pages/HomePage';
+import {Provider} from 'react-redux';
+import store from './state/store';
+import Routing from './router/Routing';
 
 function App() {
   return (
-    <div className="App">
-      <HomePage/>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Routing/>
+      </div>
+    </Provider>
+    
   );
 }
 
