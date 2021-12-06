@@ -34,7 +34,8 @@ const OwnRecipePage = () => {
                     <div className="col-lg-3"></div>
                     <div className="col-lg-6">
                         <div className="wrapper">
-                            <h1>Upload Own Recipe</h1>
+                            <h1>Upload Your Own Recipe</h1>
+                            <p>You can upload your own recipe here.</p>
                             <form method="post" onSubmit={onFormSubmit}>
                                 <div className="form-group">
                                     <label htmlFor="">Name of the Recipe</label><br/>
