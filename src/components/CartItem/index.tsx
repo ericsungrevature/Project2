@@ -1,22 +1,32 @@
+import axios from "axios";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { RecipeState } from "../../state/actions";
 import * as Creators from "../../state/creators";
-
-import { useNavigate } from "react-router-dom";
+import { RootState } from "../../state/reducers";
 
 interface ChildComponentProps {
     data: RecipeState;
 };
 
 const CartItem: React.FC<ChildComponentProps> = (props) => {
+    const state = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch();
     const {removeFromCartCreator} = bindActionCreators(Creators, dispatch);
     const navigate = useNavigate();
     function onClickHandler() {
         removeFromCartCreator(props.data);
-        navigate("/cart");
+        axios.post("http://localhost:9001/users/"+state.username, {
+            ...state,
+            cart: JSON.stringify(state.cart),
+            tags: JSON.stringify(state.tags)
+        })
+        .then(response => {
+            navigate("/cart");
+        })
+        .catch(error => {console.error(error);})
     }
     return (
         <li className="list-group-item">

@@ -1,18 +1,33 @@
-import { useDispatch } from "react-redux";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as Creators from "../../state/creators";
+import { RootState } from "../../state/reducers";
 
 const RecipeDetail = () => {
+    const state = useSelector((state: RootState) => state.user);
     const location = useLocation();
     const {data} = location.state;
     const dispatch = useDispatch();
     const {addToCartCreator} = bindActionCreators(Creators, dispatch);
     const navigate = useNavigate();
     function onClickHandler(event: any) {
-        addToCartCreator(data);
-        navigate("/");
+        if (state.username === "") {
+            navigate("/login");
+        } else {
+            addToCartCreator(data);
+            axios.post("http://localhost:9001/users/"+state.username, {
+                ...state,
+                cart: JSON.stringify(state.cart),
+                tags: JSON.stringify(state.tags)
+            })
+            .then(response => {
+                navigate("/");
+            })
+            .catch(error => {console.error(error);})
+        }
     };
     return (
         <li className="list-group-item">

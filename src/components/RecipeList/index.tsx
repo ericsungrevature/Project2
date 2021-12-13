@@ -1,34 +1,29 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { RecipeState } from "../../state/actions";
 import { RootState } from "../../state/reducers";
 import RecipeItem from "../RecipeItem";
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
-    const recipes = [
-        {
-            id: 123,
-            name: "Recipe A",
-            img: "logo.png",
-            description: "some recipe description aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            ingredients: ["ingredient A", "incredient B"],
-            directions: ["direction A", "direction B"],
-            price: 10.99,
-            tags: ["tag-a", "tag-c"]
-        },
-        {
-            id: 321,
-            name: "Recipe B",
-            img: "logo.png",
-            description: "some recipe description bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-            ingredients: ["ingredient A", "incredient B"],
-            directions: ["direction A", "direction B"],
-            price: 14.99,
-            tags: ["tag-b", "tag-c"]
-        }
-    ]
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
 const RecipeList = () => {
     const state = useSelector((state: RootState) => state.user);
-    // const state = JSON.parse(String(localStorage.getItem("user_state")));
+    const [recipes, setRecipes] = useState<RecipeState[]>([])
+    useEffect(() => {
+        axios.get("http://localhost:9001/recipes")
+        .then(response => {
+            let newState: RecipeState[] = [];
+            for(let i = 0; i < response.data.length; i++) {
+                newState.push({
+                    ...response.data[i],
+                    ingredients: JSON.parse(response.data[i].ingredients),
+                    directions: JSON.parse(response.data[i].directions),
+                    tags: JSON.parse(response.data[i].ingredients)
+                });
+            };
+            setRecipes(newState);
+        })
+        .catch(error => {console.error(error);})
+    }, []);
     return (
         <ul className="list-group list-group-horizontal">
             {recipes.filter(recipe => state.tags.every((tag: string) => recipe.tags.includes(tag)))

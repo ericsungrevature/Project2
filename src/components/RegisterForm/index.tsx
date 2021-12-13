@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -6,36 +7,36 @@ import * as Creators from "../../state/creators";
 
 const RegisterForm = () => {
     const [user, setUser] = useState({
-        id: 0,
         username: "",
         password: "",
         firstName: "",
         lastName: "",
         email: "",
-        cart: [],
-        tags: []
+        cart: "[]",
+        tags: "[]"
     });
+    const dispatch = useDispatch();
+    const {registerCreator} = bindActionCreators(Creators, dispatch);
+    const navigate = useNavigate();
     function onChangeHandler(event: any) {
         setUser({
             ...user,
             [event.target.name]: event.target.value
         });
     };
-    function onClickHandler(event: any) {
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        //get user id from database
-        setUser({
-            ...user,
-            id: 137 //placeholder value
-        });
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-    };
-    const dispatch = useDispatch();
-    const {registerCreator} = bindActionCreators(Creators, dispatch);
-    const navigate = useNavigate();
     function onSubmitHandler(event: any) {
         event.preventDefault()
-        registerCreator(user);
+        axios.post("http://localhost:9001/users", user)
+        .then(response => {
+            console.log(response.data);
+            registerCreator({
+                ...user,
+                id: response.data.id,
+                cart: [],
+                tags: []
+            });
+        })
+        .catch(error => {console.error(error);})
         navigate("/");
     };
     return (
@@ -60,7 +61,7 @@ const RegisterForm = () => {
                 <label className="form-label">Email</label>
                 <input type="email" className="form-control" name="email" value={user.email} onChange={onChangeHandler} />
             </div>
-            <button type="submit" className="btn btn-primary" onClick={onClickHandler}>Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     );
 };

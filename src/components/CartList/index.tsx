@@ -5,7 +5,6 @@ import CartItem from "../CartItem";
 
 const CartList = () => {
     const state = useSelector((state: RootState) => state.user);
-    // const state = JSON.parse(String(localStorage.getItem("user_state")));
     if(state.cart.length === 0) {
         return <p>Cart is Empty</p>;
     } else {
