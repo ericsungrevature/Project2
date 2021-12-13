@@ -1,12 +1,13 @@
 import './Header.css';
+import {FaCrown} from "react-icons/fa";
 
 const Header = () => {
     return(
         <div className="jumbotron">
-            <h1 className="display-4">Hello, Customer!</h1>
-            <h3 className="lead">You can view recipes and order! <br/>
-            You can cook your favorite meals at your home just like a chef!</h3>
-            {/* <a className="btn btn-primary btn-lg" href="#" role="button">Start Shopping</a> */}
+            <h1 className="display-4">Welcome to<br/> <FaCrown/> Cook King!</h1>
+            <h2 className="display">In here, you can view recipes and order!<br/>
+            You can cook your favorite meals at your home just like a chef!</h2>
+            <a className="btn btn-success btn-lg" href="/login" role="button">Start</a>
         </div>
     );
 };

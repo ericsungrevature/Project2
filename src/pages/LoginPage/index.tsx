@@ -10,7 +10,7 @@ const LoginPage = () => {
             <Navbar />
             <Display />
             <LoginForm />
-            <RegisterRequest />
+            {/* <RegisterRequest /> */}
             <Footer />
         </div>
     );

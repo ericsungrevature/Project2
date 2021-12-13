@@ -1,54 +1,58 @@
-import React from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
-import { RecipeState } from "../../state/actions";
 import * as Creators from "../../state/creators";
 
-interface ChildComponentProps {
-    data: RecipeState;
-};
-
-const RecipeDetail: React.FC<ChildComponentProps> = (props) => {
+const RecipeDetail = () => {
+    const location = useLocation();
+    const {data} = location.state;
     const dispatch = useDispatch();
     const {addToCartCreator} = bindActionCreators(Creators, dispatch);
     const navigate = useNavigate();
-    function onClickHandler(event: any) {
-        addToCartCreator({
-            id: props.data.id,
-            name: props.data.name,
-            img: props.data.img,
-            description: props.data.description,
-            ingredients: props.data.ingredients,
-            directions: props.data.directions,
-            price: props.data.price
-        });
-        navigate("/");
-    };
+
+    function onClickHandler(event: any){
+        addToCartCreator(data);
+        navigate("/")
+    }
+
     return (
         <li className="list-group-item">
-            <h3>{props.data.name}</h3>
+            <h3>{data.name}</h3>
+            {/* <div className="row"></div> */}
             <div className="row">
-                <div className="col-4">
-                    <img alt={props.data.img} />
+                <div className="col-6">
+                    <img alt={data.img} />
                 </div>
-                <div className="col-8">
-                    <p>{props.data.description}</p>
+                <div className="col-6">
+                    <div className="row">
+                        <div className="col-6">
+                            <span>Price: ${data.price}</span>
+                        </div>
+                        <div className="col-6">
+                            <button type="button" className="btn btn-primary btn-sm" onClick={onClickHandler}>Add Item to Cart</button>
+                        </div>
+                    </div>
+                    <div className="row text-break">
+                        {data.description}
+                    </div>
                 </div>
+            </div>
+            <div className="row">
+                <h5>Ingredients</h5>
             </div>
             <div className="row">
                 <ul className="list-group">
-                    {props.data.ingredients.map(ingredient => <li className="list-group-item">{ingredient}</li>)}
+                    {data.ingredients.map((ingredient: string) => <li className="list-group-item border-0">{ingredient}</li>)}
                 </ul>
             </div>
             <div className="row">
-                <ol className="list-group">
-                    {props.data.directions.map(direction => <li className="list-group-item">{direction}</li>)}
-                </ol>
+                <h5>Directions</h5>
             </div>
             <div className="row">
-                <span>${props.data.price}</span>
-                <button type="button" className="btn btn-primary" onClick={onClickHandler}>Add Item to Cart</button>
+                <ol className="list-group list-group-numbered">
+                    {data.directions.map((direction: string) => <li className="list-group-item border-0">{direction}</li>)}
+                </ol>
             </div>
         </li>
     );

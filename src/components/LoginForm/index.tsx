@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as Creators from "../../state/creators";
+import RegisterRequest from "../RegisterRequest";
 import './Login.css';
 
 const LoginForm = () => {
@@ -12,7 +13,9 @@ const LoginForm = () => {
         password: "",
         firstName: "",
         lastName: "",
-        email: ""
+        email: "",
+        cart:[],
+        tags:[]
     });
     function onChangeHandler(event: any) {
         setUser({
@@ -41,6 +44,7 @@ const LoginForm = () => {
     return (
         <div className="LoginContainer">
             <div className="wrapper">
+                <h1>Log In</h1>
                 <form onSubmit={onSubmitHandler}>
                     <div className="mb-3">
                         <label className="form-label">Username</label>
@@ -50,8 +54,9 @@ const LoginForm = () => {
                         <label className="form-label">Password</label>
                         <input type="password" className="form-control" name="password" value={user.password} onChange={onChangeHandler} />
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={onClickHandler}>Submit</button>
+                    <button type="submit" className="btn btn-primary" onClick={onClickHandler}>Log In</button>
                 </form>
+                <RegisterRequest/>
             </div>
         </div>
     );

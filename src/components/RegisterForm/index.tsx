@@ -11,8 +11,15 @@ const RegisterForm = () => {
         password: "",
         firstName: "",
         lastName: "",
-        email: ""
+        email: "",
+        cart: [],
+        tags: []
     });
+
+    // const dispatch = useDispatch();
+    // const {uploadRecipe} = bindActionCreators(Creators, dispatch);
+    // const navigate = useNavigate();
+
     function onChangeHandler(event: any) {
         setUser({
             ...user,
@@ -25,6 +32,7 @@ const RegisterForm = () => {
             ...user,
             id: 137 //placeholder value
         });
+        
     };
     const dispatch = useDispatch();
     const {registerCreator} = bindActionCreators(Creators, dispatch);
