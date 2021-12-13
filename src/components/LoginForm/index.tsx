@@ -11,7 +11,9 @@ const LoginForm = () => {
         password: "",
         firstName: "",
         lastName: "",
-        email: ""
+        email: "",
+        cart: [],
+        tags: []
     });
     function onChangeHandler(event: any) {
         setUser({
@@ -20,7 +22,7 @@ const LoginForm = () => {
         });
     };
     function onClickHandler(event: any) {
-        //get user info from database
+        //get user info from database//////////////////////////////////////////////////////////////////////
         setUser({
             ...user,
             id: 137,
@@ -28,10 +30,11 @@ const LoginForm = () => {
             lastName: "Smith",
             email: "j@gmail.com"
         });
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
     };
     const dispatch = useDispatch();
     const {loginCreator} = bindActionCreators(Creators, dispatch);
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     function onSubmitHandler(event: any) {
         event.preventDefault();
         loginCreator(user);

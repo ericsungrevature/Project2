@@ -44,3 +44,21 @@ export const removeFromCartCreator = (recipe: RecipeState) => {
         })
     };
 };
+
+export const addToTagsCreator = (tag: string) => {
+    return (dispatch: Dispatch<Actions>) => {
+        dispatch({
+            type: ActionTypes.ADDTOTAGS,
+            payload: tag
+        })
+    }
+}
+
+export const removeFromTagsCreator = (tag: string) => {
+    return (dispatch: Dispatch<Actions>) => {
+        dispatch({
+            type: ActionTypes.REMOVEFROMTAGS,
+            payload: tag
+        })
+    }
+}

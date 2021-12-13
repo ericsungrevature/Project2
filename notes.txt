@@ -1,0 +1,5 @@
+function checkTags(arr, target) {
+	return (arr, target) => target.every(t => arr.includes(t));
+}
+
+recipies.filter( (r) =>  checkTags(r.tags, target));

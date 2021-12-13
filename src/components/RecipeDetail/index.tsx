@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as Creators from "../../state/creators";
 
@@ -23,6 +23,7 @@ const RecipeDetail = () => {
             <div className="row">
                 <div className="col-6">
                     <img alt={data.img} />
+                    <p className="text-break">{data.tags.map((tag: string) => <span>{"#"+tag+" "}</span>)}</p>
                 </div>
                 <div className="col-6">
                     <div className="row">

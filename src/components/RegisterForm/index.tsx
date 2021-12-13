@@ -11,7 +11,9 @@ const RegisterForm = () => {
         password: "",
         firstName: "",
         lastName: "",
-        email: ""
+        email: "",
+        cart: [],
+        tags: []
     });
     function onChangeHandler(event: any) {
         setUser({
@@ -20,11 +22,13 @@ const RegisterForm = () => {
         });
     };
     function onClickHandler(event: any) {
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
         //get user id from database
         setUser({
             ...user,
             id: 137 //placeholder value
         });
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
     };
     const dispatch = useDispatch();
     const {registerCreator} = bindActionCreators(Creators, dispatch);

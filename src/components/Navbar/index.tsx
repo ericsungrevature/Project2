@@ -4,6 +4,7 @@ import { RootState } from "../../state/reducers";
 
 const LoginButton = () => {
     const state = useSelector((state: RootState) => state.user);
+    // const state = JSON.parse(String(localStorage.getItem("user_state")));
     if (state.username === "") {
         return <Link className="nav-link" to="/login">Login</Link>;
     };
@@ -12,6 +13,7 @@ const LoginButton = () => {
 
 const LogoutButton = () => {
     const state = useSelector((state: RootState) => state.user);
+    // const state = JSON.parse(String(localStorage.getItem("user_state")));
     if (state.username !== "") {
         return <Link className="nav-link" to="/logout">Logout</Link>;
     };

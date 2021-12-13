@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/reducers";
 import RecipeItem from "../RecipeItem";
 
-const RecipeList = () => {
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
     const recipes = [
         {
             id: 123,
@@ -9,7 +11,8 @@ const RecipeList = () => {
             description: "some recipe description aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             ingredients: ["ingredient A", "incredient B"],
             directions: ["direction A", "direction B"],
-            price: 10.99
+            price: 10.99,
+            tags: ["tag-a", "tag-c"]
         },
         {
             id: 321,
@@ -18,12 +21,18 @@ const RecipeList = () => {
             description: "some recipe description bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             ingredients: ["ingredient A", "incredient B"],
             directions: ["direction A", "direction B"],
-            price: 14.99
+            price: 14.99,
+            tags: ["tag-b", "tag-c"]
         }
     ]
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+const RecipeList = () => {
+    const state = useSelector((state: RootState) => state.user);
+    // const state = JSON.parse(String(localStorage.getItem("user_state")));
     return (
         <ul className="list-group list-group-horizontal">
-            {recipes.map(recipe => <div className="col-3"><RecipeItem data={recipe}/></div>)}
+            {recipes.filter(recipe => state.tags.every((tag: string) => recipe.tags.includes(tag)))
+            .map(recipe => <div className="col-3"><li className="list-group-item"><RecipeItem data={recipe}/></li></div>)}
         </ul>
     )
 };
