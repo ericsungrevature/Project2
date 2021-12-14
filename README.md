@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+# Project2
+Recipe Shopping Catelog - Spring Boot React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Description
+The Recipe Shopping Catelog is a system that will display a list of recipes and manage their purchase.
+Users will be able to login with a username and password or register an account.
+Once logged in they may add recipes to a shopping cart or upload their own recipes to be displayed in the homepage for display.
+They may view a recipe in detail to display information such as the ingredients required and the directions on how to cook the dish.
+They may also view their items for purchase in a shopping cart that will display their total due.
 
-## Available Scripts
+# Technologies Used
+* HTML
+* CSS
+* JavaScript
+* TypeScript
+* JAVA
+* JDBC
+* MySQL
+* H2 Database
+* Tomcat
+* BootStrap
+* Maven
+* React
+* Spring
+* Hibernate
+* Lombok
 
-In the project directory, you can run:
+# Features
+* Allow users to login, register, and logout the application.
+* Allow users to view a list of recipes and display details about them.
+* Allow users to send recipes to a shopping cart that displays their total cost.
+* Allow users to search recipes by tags that they are assigned.
+* Allow users to upload their own recipes to be shown with other recipes.
 
-### `npm start`
+# Getting Started
+1. You can simply download the zip package or clone it with this url: https://github.com/ericsungrevature/Project2.git.
+- git clone comand: git clone https://github.com/ericsungrevature/Project2.git
+2. Run Project2 Java Application to create server for databases user and recipe.
+3. Run React Application using console command npm start in \webapp folder
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Usage
+1. There is a navbar located at the top of the screen that will connect to Home, Login/Logout, Cart, and Upload Own Recipe.
+2. The login page will ask for username and password. There will be a link that will take you to the register page where you would fill first name, last name, username, password, and email. After logging in or registering it will return you to the home page
+3. The home page is where you will begin at. There is a list of recipe cards and a tag search bar.
+4. Selecting the details button on one of the recipe cards will take you to the recipe page that will display its details.
+5. Selecting the add to cart button will send it to the shopping cart and return you to the home page.
+6. The tag search bar can be used to narrow down a search. By typing a tag name or selecting a premade selection of tags it will display recipes that have those tags in their details page. A clear button is available to remove all tags selected for search.
+7. The upload your own recipe page will allow you to create a recipe that will upload to the database. You can drag and drop an image for the recipe and enter its name, a description, a list of ingredients and directions to cook, its price, and the tags the recipe would be found under. Uploading the recipe will return you to the home page
+8. The cart page will display the recipes that will be purchased. You may remove an item from the cart or purchase the items listed. You would then be returned to the home page.
+ 
+# Contributors
+Team members: Jae Park, Eric Sung
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Team name: Team Team
