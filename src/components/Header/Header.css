@@ -1,0 +1,20 @@
+.jumbotron {
+  /* background-image: url("https://im.indiatimes.in/content/2021/Nov/salt_618e2f31a83bc.jpg?w=2184&h=1116&cc=1"); */
+  background-image: url("https://media0.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif?cid=790b7611a6e2eecf07f7711aee32e766faf177c9cbecc947&rid=giphy.gif&ct=g");
+  background-repeat: no-repeat;
+  background-color: black;
+  background-position: center;
+  background-size: 900px;
+  height: 450px;
+  margin-bottom: 10px;
+}
+
+.jumbotron h1,
+h2 {
+  color: white;
+  /* font-weight: bold; */
+  /* text-align: center; */
+  position: relative;
+  display: block;
+  padding-top: 40px;
+}

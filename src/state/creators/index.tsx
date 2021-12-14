@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import Actions, { ActionTypes, UserState } from "../actions";
+import Actions, { ActionTypes, RecipeState, UserState } from "../actions";
 
 export const loginCreator = (user: UserState) => {
     return (dispatch: Dispatch<Actions>) => {
@@ -67,6 +67,15 @@ export const removeFromTagsCreator = (tag: string) => {
         dispatch({
             type: ActionTypes.REMOVEFROMTAGS,
             payload: tag
+        })
+    }
+}
+
+export const addRecipeCreator = (recipe: RecipeState) => {
+    return (dispatch: Dispatch<Actions>) => {
+        dispatch({
+            type:ActionTypes.ADDRECIPE,
+            payload: recipe
         })
     }
 }

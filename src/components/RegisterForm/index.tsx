@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as Creators from "../../state/creators";
+import "./RegisterForm.css"
 
 const RegisterForm = () => {
     const [user, setUser] = useState({
@@ -40,29 +41,42 @@ const RegisterForm = () => {
         navigate("/");
     };
     return (
-        <form onSubmit={onSubmitHandler}>
-            <div className="mb-3">
-                <label className="form-label">Username</label>
-                <input type="text" className="form-control" name="username" value={user.username} onChange={onChangeHandler} />
+        <div className="RegisterContainer">
+        <div className="container">
+            <h1>Register Your Account</h1>
+            <div className="row">
+            <div className="col-3"></div>
+            <div className="col-6 bg-light">
+                <form onSubmit={onSubmitHandler}>
+                    <div className="my-3">
+                        <label className="form-label">Username</label>
+                        <input type="text" className="form-control" name="username" value={user.username} onChange={onChangeHandler} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Password</label>
+                        <input type="password" className="form-control" name="password" value={user.password} onChange={onChangeHandler} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">First Name</label>
+                        <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={onChangeHandler} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Last Name</label>
+                        <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={onChangeHandler} />
+                    </div>
+                    <div className="my-3">
+                        <label className="form-label">Email</label>
+                        <input type="email" className="form-control" name="email" value={user.email} onChange={onChangeHandler} />
+                    </div>
+                    <div className="my-3">
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </div>
+                </form>
             </div>
-            <div className="mb-3">
-                <label className="form-label">Password</label>
-                <input type="password" className="form-control" name="password" value={user.password} onChange={onChangeHandler} />
+            <div className="col-3"></div>
             </div>
-            <div className="mb-3">
-                <label className="form-label">First Name</label>
-                <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={onChangeHandler} />
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Last Name</label>
-                <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={onChangeHandler} />
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input type="email" className="form-control" name="email" value={user.email} onChange={onChangeHandler} />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+        </div>
+        </div>
     );
 };
 

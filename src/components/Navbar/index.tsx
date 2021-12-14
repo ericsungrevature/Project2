@@ -38,11 +38,10 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item active">
                         <Link className="nav-link" to="/cart">Cart</Link>
-                        {/* <a className="nav-link" href="/cart">Cart<span className="sr-only">(current)</span></a> */}
                     </li>
-                    {/* <li className="nav-item active">
-                        <Link className="nav-link" to="/recipe">Recipe (not complete)</Link>
-                    </li> */}
+                    <li className="nav-item active">
+                        <Link className="nav-link" to="/ownRecipe">Upload Recipe</Link>
+                    </li>
                 </ul>
             </div>
         </nav>

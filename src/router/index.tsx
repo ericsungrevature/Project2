@@ -5,6 +5,7 @@ import LogoutPage from "../pages/LogoutPage";
 import RegisterPage from "../pages/RegisterPage";
 import RecipePage from "../pages/RecipePage";
 import CartPage from "../pages/CartPage";
+import OwnRecipePage from "../pages/OwnRecipePage"
 
 const Router = () => {
     return (
@@ -16,6 +17,7 @@ const Router = () => {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/recipe" element={<RecipePage />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/ownRecipe" element={<OwnRecipePage/>} />
             </Routes>
         </BrowserRouter>
     );

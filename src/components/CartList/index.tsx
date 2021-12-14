@@ -7,6 +7,7 @@ import { RecipeState } from "../../state/actions";
 import * as Creators from "../../state/creators";
 import { RootState } from "../../state/reducers";
 import CartItem from "../CartItem";
+import { FaShoppingCart } from "react-icons/fa";
 
 const CartList = () => {
     const state = useSelector((state: RootState) => state.user);
@@ -42,19 +43,42 @@ const CartList = () => {
         .catch(error => {console.error(error);})
     }
     if(recipes.length === 0) {
-        return <p className="text-right">Cart is Empty</p>;
+        return (
+            <div className="container my-3 bg-light">
+                <div className="row">
+                    <h1>Your Cart <FaShoppingCart/></h1>
+                </div>
+                <div className="row p-3">
+                    <p className="text-right">Cart is Empty</p>
+                </div>
+            </div>
+        );
     } else {
         let sum = 0.0
         for (let i = 0; i < recipes.length; i++) {
             sum += recipes[i].price;
         }
         return (
-            <div>
+            <div className="container my-3 bg-light">
+                <div className="row">
+                    <h1>Your Cart <FaShoppingCart/></h1>
+                </div>
                 <ul className="list-group">
                     {recipes.map((recipe: RecipeState) => <CartItem data={recipe} />)}
                 </ul>
-                <p>${sum}</p>
-                <button onClick={onClickHandler}>Purchase Items</button>
+                <div className="row mt-3">
+                    <div className="col-10"></div>
+                    <div className="col-2">
+                        <p className="text-center">Total: ${sum}</p>
+                    </div>
+                </div>
+                <hr />
+                <div className="row pb-3">
+                    <div className="col-10"></div>
+                    <div className="col-2">
+                        <button className="btn btn-success" onClick={onClickHandler}>Purchase Items</button>
+                    </div>
+                </div>
             </div>
         );
     }

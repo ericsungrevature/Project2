@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as Creators from "../../state/creators";
+import './Login.css';
 
 const LoginForm = () => {
     const [user, setUser] = useState({
@@ -39,17 +40,23 @@ const LoginForm = () => {
         .catch(error => {console.error(error);})
     };
     return (
-        <form onSubmit={onSubmitHandler}>
-            <div className="mb-3">
-                <label className="form-label">Username</label>
-                <input type="text" className="form-control" name="username" value={user.username} onChange={onChangeHandler} />
+        <div className="LoginContainer">
+            <div className="wrapper">
+                <h1>Log In</h1>
+                <form onSubmit={onSubmitHandler}>
+                    <div className="mb-3">
+                        <label className="form-label">Username</label>
+                        <input type="text" className="form-control" name="username" value={user.username} onChange={onChangeHandler} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Password</label>
+                        <input type="password" className="form-control" name="password" value={user.password} onChange={onChangeHandler} />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
+                <Link to="/register">If you do not have an account click here to register</Link>
             </div>
-            <div className="mb-3">
-                <label className="form-label">Password</label>
-                <input type="password" className="form-control" name="password" value={user.password} onChange={onChangeHandler} />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+        </div>
     );
 };
 

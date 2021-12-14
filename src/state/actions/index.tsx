@@ -6,7 +6,8 @@ export enum ActionTypes {
     REMOVEFROMCART = "REMOVEFROMCART",
     EMPTYCART = "EMPTYCART",
     ADDTOTAGS = "ADDTOTAGS",
-    REMOVEFROMTAGS = "REMOVEFROMTAGS"
+    REMOVEFROMTAGS = "REMOVEFROMTAGS",
+    ADDRECIPE = "ADDRECIPE"
 };
 
 export interface UserState {
@@ -69,6 +70,11 @@ interface RemoveFromTagsAction {
     payload: string
 }
 
-type Actions = LoginAction | LogoutAction | RegisterAction | AddToCartAction | RemoveFromCartAction | EmptyCartAction | AddtoTagsAction | RemoveFromTagsAction;
+interface AddRecipeAction {
+    type: ActionTypes.ADDRECIPE,
+    payload: RecipeState
+}
+
+type Actions = LoginAction | LogoutAction | RegisterAction | AddToCartAction | RemoveFromCartAction | EmptyCartAction | AddtoTagsAction | RemoveFromTagsAction | AddRecipeAction;
 
 export default Actions;
