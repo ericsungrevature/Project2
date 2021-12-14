@@ -21,7 +21,7 @@ const RecipeDetail = () => {
             axios.post("http://localhost:9001/users/"+state.username, {
                 ...state,
                 cart: JSON.stringify(state.cart),
-                tags: JSON.stringify(state.tags)
+                tags: "[]"//JSON.stringify(state.tags)
             })
             .then(response => {
                 navigate("/");

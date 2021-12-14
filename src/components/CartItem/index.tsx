@@ -26,7 +26,7 @@ const CartItem: React.FC<ChildComponentProps> = (props) => {
         axios.post("http://localhost:9001/users/"+state.username, {
             ...state,
             cart: JSON.stringify(newArray),
-            tags: JSON.stringify(state.tags)
+            tags: "[]"//JSON.stringify(state.tags)
         })
         .then(response => {
             navigate("/");

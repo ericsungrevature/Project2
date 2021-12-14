@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import Actions, { ActionTypes, RecipeState, UserState } from "../actions";
+import Actions, { ActionTypes, UserState } from "../actions";
 
 export const loginCreator = (user: UserState) => {
     return (dispatch: Dispatch<Actions>) => {

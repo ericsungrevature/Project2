@@ -25,9 +25,9 @@ const LoginForm = () => {
         .then(response => {
             console.log(response.data);
             if(response.data === "") {
-                throw "Invalid login";
+                throw new Error("Invalid login");
             } else if (user.password !== response.data.password) {
-                throw "Invalid password";
+                throw new Error("Invalid password");
             }
             loginCreator({
                 ...response.data,
