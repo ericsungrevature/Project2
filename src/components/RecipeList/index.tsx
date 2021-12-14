@@ -90,6 +90,8 @@ const RecipeList = () => {
                 </ul>
             </div>
             <div className="col-9">
+                <h1>Recipes</h1>
+                <hr />
                 <ul className="list-group list-group-horizontal" style={ulStyle}>
                     {recipes.filter(recipe => state.tags.every((tag: string) => recipe.tags.includes(tag)))
                     .map(recipe => <div className="col-3"><li className="list-group-item border-0"><RecipeItem data={recipe}/></li></div>)}
