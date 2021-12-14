@@ -28,10 +28,21 @@ const userReducer = (state: UserState = initialState, action: Actions): UserStat
             return state;
         case ActionTypes.REMOVEFROMCART:
             console.log("remove from cart");
+            const newArray = Object.assign([], state.cart);
+            const index = newArray.indexOf(action.payload, 0);
+            if (index > -1) {
+                newArray.splice(index, 1);
+            }
             return {
                 ...state,
-                cart: state.cart.filter(recipe => recipe !== action.payload)
+                cart: newArray
             };
+        case ActionTypes.EMPTYCART:
+            console.log("empty cart");
+            return {
+                ...state,
+                cart: []
+            }
         case ActionTypes.ADDTOTAGS:
             console.log("add to tags");
             if(state.tags.indexOf(action.payload) === -1) {

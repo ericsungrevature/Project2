@@ -17,14 +17,19 @@ const CartItem: React.FC<ChildComponentProps> = (props) => {
     const {removeFromCartCreator} = bindActionCreators(Creators, dispatch);
     const navigate = useNavigate();
     function onClickHandler() {
-        removeFromCartCreator(props.data);
+        removeFromCartCreator(props.data.id);
+        const newArray = Object.assign([], state.cart);
+        const index = newArray.indexOf(props.data.id, 0);
+        if (index > -1) {
+            newArray.splice(index, 1);
+        }
         axios.post("http://localhost:9001/users/"+state.username, {
             ...state,
-            cart: JSON.stringify(state.cart),
+            cart: JSON.stringify(newArray),
             tags: JSON.stringify(state.tags)
         })
         .then(response => {
-            navigate("/cart");
+            navigate("/");
         })
         .catch(error => {console.error(error);})
     }

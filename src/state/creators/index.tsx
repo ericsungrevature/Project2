@@ -27,7 +27,7 @@ export const registerCreator = (user: UserState) => {
     };
 };
 
-export const addToCartCreator = (recipe: RecipeState) => {
+export const addToCartCreator = (recipe: number) => {
     return (dispatch: Dispatch<Actions>) => {
         dispatch({
             type: ActionTypes.ADDTOCART,
@@ -36,7 +36,7 @@ export const addToCartCreator = (recipe: RecipeState) => {
     };
 };
 
-export const removeFromCartCreator = (recipe: RecipeState) => {
+export const removeFromCartCreator = (recipe: number) => {
     return (dispatch: Dispatch<Actions>) => {
         dispatch({
             type: ActionTypes.REMOVEFROMCART,
@@ -44,6 +44,14 @@ export const removeFromCartCreator = (recipe: RecipeState) => {
         })
     };
 };
+
+export const emptyCartCreator = (() => {
+    return (dispatch: Dispatch<Actions>) => {
+        dispatch({
+            type: ActionTypes.EMPTYCART
+        })
+    };
+})
 
 export const addToTagsCreator = (tag: string) => {
     return (dispatch: Dispatch<Actions>) => {

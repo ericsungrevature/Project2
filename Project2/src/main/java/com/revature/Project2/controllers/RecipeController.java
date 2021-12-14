@@ -1,6 +1,7 @@
 package com.revature.Project2.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ public class RecipeController {
 		return service.getAllRecipes();
 	}
 	@GetMapping("/recipes/{id}")
-	public Recipe getRecipeById(@PathVariable("id") long id) {
+	public Optional<Recipe> getRecipeById(@PathVariable("id") long id) {
 		System.out.println("get recipe");
 		return service.getRecipeById(id);
 	}

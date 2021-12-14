@@ -17,7 +17,7 @@ const RecipeDetail = () => {
         if (state.username === "") {
             navigate("/login");
         } else {
-            addToCartCreator(data);
+            addToCartCreator(data.id);
             axios.post("http://localhost:9001/users/"+state.username, {
                 ...state,
                 cart: JSON.stringify(state.cart),
