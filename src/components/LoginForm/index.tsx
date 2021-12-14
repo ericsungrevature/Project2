@@ -5,17 +5,12 @@ import { bindActionCreators } from "redux";
 import * as Creators from "../../state/creators";
 import RegisterRequest from "../RegisterRequest";
 import './Login.css';
+import axios from 'axios';
 
 const LoginForm = () => {
     const [user, setUser] = useState({
-        id: 0,
         username: "",
-        password: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        cart:[],
-        tags:[]
+        password: ""
     });
     function onChangeHandler(event: any) {
         setUser({
@@ -23,23 +18,31 @@ const LoginForm = () => {
             [event.target.name]: event.target.value
         });
     };
-    function onClickHandler(event: any) {
-        //get user info from database
-        setUser({
-            ...user,
-            id: 137,
-            firstName: "John",
-            lastName: "Smith",
-            email: "j@gmail.com"
-        });
-    };
+    
     const dispatch = useDispatch();
     const {loginCreator} = bindActionCreators(Creators, dispatch);
     let navigate = useNavigate();
     function onSubmitHandler(event: any) {
         event.preventDefault();
-        loginCreator(user);
-        navigate("/");
+        axios.get('http://localhost:9001/users' + user.username)
+        .then(response => {
+            console.log(response.data)
+            if(response.data === ""){
+                alert("Invalid login");
+            } else if(user.password !== response.data.password){
+                alert("Invalid password");
+            }
+            loginCreator({
+                ...response.data,
+                cart: JSON.parse(response.data.cart),
+                tags: JSON.parse(response.data.tags)
+            });
+            navigate("/");
+        })
+        .catch(error => {
+            console.error(error)
+        })
+        
     };
     return (
         <div className="LoginContainer">
@@ -54,7 +57,7 @@ const LoginForm = () => {
                         <label className="form-label">Password</label>
                         <input type="password" className="form-control" name="password" value={user.password} onChange={onChangeHandler} />
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={onClickHandler}>Log In</button>
+                    <button type="submit" className="btn btn-primary">Log In</button>
                 </form>
                 <RegisterRequest/>
             </div>

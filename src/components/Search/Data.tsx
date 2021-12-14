@@ -2,13 +2,13 @@ const Data = {
     cardData:[
         {
             id: 123,
-            name: "Fresh Basil Fettuccine Pasta with Tomatoes",
+            name: "Recipe A",
             img: "logo.png",
-            description: "Flavorful sauce for fresh basil fettuccine simply by cooking sweet tomatoes with aromatic garlic, verdant zucchini, and a touch of spicy crushed red pepper.",
-            ingredients: ["1/2lb Fresh Basil Fettuccine Pasta", "2 cloves Garlic", "14-Oz can Tomatoes (Peeled)", "1 Zucchini", "1 oz Salted Butter", "1/4 cup Grated Parmesan Cheese", "2 Tbsps Creme Fraichie", "1/4 tsp Crushed Red Pepper Flakes"],
+            description: "some recipe description here",
+            ingredients: ["ingredient A", "ingredient B"],
             directions: ["direction A", "direction B"],
             price: 10.99,
-            tags: ["tag-a", "tag-c"]
+            tags: ["tag-a"]
         },
         {
             id: 321,
@@ -28,7 +28,7 @@ const Data = {
             ingredients: ["ingredient A", "ingredient B"],
             directions: ["direction A", "direction B"],
             price: 14.99,
-            tags: ["tag-a", "tag-c"]
+            tags: ["tag-c"]
         },
         {
             id: 654,
@@ -42,7 +42,7 @@ const Data = {
         },
         {
             id: 654,
-            name: "Recipe D",
+            name: "Recipe E",
             img: "logo.png",
             description: "some recipe description here",
             ingredients: ["ingredient A", "ingredient B"],
@@ -52,7 +52,27 @@ const Data = {
         },
         {
             id: 654,
-            name: "Recipe D",
+            name: "Recipe F",
+            img: "logo.png",
+            description: "some recipe description here",
+            ingredients: ["ingredient A", "ingredient B"],
+            directions: ["direction A", "direction B"],
+            price: 14.99,
+            tags: ["tag-b", "tag-c"]
+        },
+        {
+            id: 654,
+            name: "Recipe G",
+            img: "logo.png",
+            description: "some recipe description here",
+            ingredients: ["ingredient A", "ingredient B"],
+            directions: ["direction A", "direction B"],
+            price: 14.99,
+            tags: ["tag-b", "tag-c"]
+        },
+        {
+            id: 654,
+            name: "Recipe H",
             img: "logo.png",
             description: "some recipe description here",
             ingredients: ["ingredient A", "ingredient B"],

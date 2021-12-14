@@ -32,13 +32,13 @@ const Search = () => {
                 })
                 .map((item, index) =>{
                     return(
-                        <div className="col-11 col-md-6 col-lg-3 mx-0 mb-4">
+                        <div className="col-11 col-md-6 col-lg-4 mx-0 mb-4">
                             <div className="card p-0 overflow-hidden h-100 shadow">
                                 <img src={item.img} className="card-img-top"/>
                                 <div className="card-body">
                                     <h5 className="card-title">{item.name}</h5>
                                     <p className="card-text">{item.description}</p>
-                                    <p className="card-tag">{item.tags}</p>
+                                    <p className="card-tag">#{item.tags}</p>
                                 </div>
                             </div>
                         </div>

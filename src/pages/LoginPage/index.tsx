@@ -8,7 +8,7 @@ const LoginPage = () => {
     return (
         <div>
             <Navbar />
-            <Display />
+            {/* <Display /> */}
             <LoginForm />
             {/* <RegisterRequest /> */}
             <Footer />

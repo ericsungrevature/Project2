@@ -17,7 +17,7 @@ const recipeReducer = (state: RecipeState = initialState, action: Actions): Reci
             console.log("recipe added");
             return action.payload;
         default:
-                return state;
+            return state;
     }    
     
 };

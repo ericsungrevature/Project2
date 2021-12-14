@@ -18,9 +18,3 @@ h2 {
   display: block;
   padding-top: 40px;
 }
-
-.jumbotron .btn {
-  position: absolute;
-  top: 450px;
-  right: 300px;
-}

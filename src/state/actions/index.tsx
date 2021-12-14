@@ -4,9 +4,11 @@ export enum ActionTypes {
     REGISTER = "REGISTER",
     ADDTOCART = "ADDTOCART",
     REMOVEFROMCART = "REMOVEFROMCART",
+    EMPTYCART = "EMPTYCART",
     ADDTOTAGS = "ADDTOTAGS",
     REMOVEFROMTAGS = "REMOVEFROMTAGS",
     ADDRECIPE = "ADDRECIPE"
+
 };
 
 export interface UserState {
@@ -16,7 +18,7 @@ export interface UserState {
     firstName: string,
     lastName: string,
     email: string,
-    cart: RecipeState[],
+    cart: number[],
     tags: string[]
 };
 
@@ -47,12 +49,16 @@ interface RegisterAction {
 
 interface AddToCartAction {
     type: ActionTypes.ADDTOCART,
-    payload: RecipeState
+    payload: number
 }
 
 interface RemoveFromCartAction {
     type: ActionTypes.REMOVEFROMCART,
-    payload: RecipeState
+    payload: number
+}
+
+interface EmptyCartAction {
+    type: ActionTypes.EMPTYCART
 }
 
 interface AddtoTagsAction {
@@ -65,12 +71,16 @@ interface RemoveFromTagsAction {
     payload: string
 }
 
-interface ADDRECIPE {
+interface AddRecipeAction {
     type: ActionTypes.ADDRECIPE,
     payload: RecipeState
 }
 
-
-type Actions = LoginAction | LogoutAction | RegisterAction | AddToCartAction | RemoveFromCartAction | AddtoTagsAction | RemoveFromTagsAction | ADDRECIPE;
+type Actions = LoginAction | LogoutAction | RegisterAction | AddToCartAction | RemoveFromCartAction | EmptyCartAction | AddtoTagsAction | RemoveFromTagsAction | AddRecipeAction;
 
 export default Actions;
+
+
+
+
+

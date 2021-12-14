@@ -1,27 +1,41 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { bindActionCreators } from 'redux';
 import { RecipeState } from "../../state/actions";
 import * as Creators from "../../state/creators";
 import {useNavigate} from "react-router-dom";
+import axios from 'axios';
+import { RootState} from "../../state/reducers";
 
 interface ChildComponentProps {
     data: RecipeState;
 };
 
 const CartItem: React.FC<ChildComponentProps> = (props) => {
+    const state = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch();
     const {removeFromCartCreator} = bindActionCreators(Creators, dispatch);
     const navigate = useNavigate();
-    
-    function onClickHandler(){
-        removeFromCartCreator(props.data);
-        navigate("/cart");
+    function onClickHandler() {
+        removeFromCartCreator(props.data.id);
+        const newArray = Object.assign([], state.cart);
+        const index = newArray.indexOf(props.data.id, 0);
+        if (index > -1) {
+            newArray.splice(index, 1);
+        }
+        axios.post("http://localhost:9001/users/"+state.username, {
+            ...state,
+            cart: JSON.stringify(newArray),
+            tags: JSON.stringify(state.tags)
+        })
+        .then(response => {
+            navigate("/");
+        })
+        .catch(error => {console.error(error);})
     }
-
     return (
         <li className="list-group-item">
-            <h3>Item #{props.data.id} - {props.data.name}</h3>
+            <h4>Item #{props.data.id} - {props.data.name}</h4>
             <div className="row">
                 <div className="col-3">
                     <img alt={props.data.img} />

@@ -7,7 +7,7 @@ const RegisterPage = () => {
     return (
         <div>
             <Navbar />
-            <Display />
+            {/* <Display /> */}
             <RegisterForm />
             <Footer />
         </div>

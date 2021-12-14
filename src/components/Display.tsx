@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux"
 import { RootState } from "../state/reducers"
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const Display = () => {
     const state = useSelector((state: RootState) => state.user);

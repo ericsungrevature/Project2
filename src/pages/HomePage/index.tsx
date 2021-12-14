@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import RecipeList from "../../components/RecipeList";
 import Search from "../../components/Search";
-import Sidebar from "../../components/Sidebar";
+// import Sidebar from "../../components/Sidebar";
 import TagForm from '../../components/TagForm/index';
 
 const HomePage = () => {

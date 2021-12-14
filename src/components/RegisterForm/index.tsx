@@ -3,22 +3,16 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as Creators from "../../state/creators";
+import axios from 'axios';
 
 const RegisterForm = () => {
     const [user, setUser] = useState({
-        id: 0,
         username: "",
         password: "",
         firstName: "",
         lastName: "",
-        email: "",
-        cart: [],
-        tags: []
+        email: ""
     });
-
-    // const dispatch = useDispatch();
-    // const {uploadRecipe} = bindActionCreators(Creators, dispatch);
-    // const navigate = useNavigate();
 
     function onChangeHandler(event: any) {
         setUser({
@@ -26,24 +20,31 @@ const RegisterForm = () => {
             [event.target.name]: event.target.value
         });
     };
-    function onClickHandler(event: any) {
-        //get user id from database
-        setUser({
-            ...user,
-            id: 137 //placeholder value
-        });
-        
-    };
+    
     const dispatch = useDispatch();
     const {registerCreator} = bindActionCreators(Creators, dispatch);
     const navigate = useNavigate();
     function onSubmitHandler(event: any) {
         event.preventDefault()
-        registerCreator(user);
+        axios.post('http://localhost:9001/users', user)
+        .then(response => {
+            console.log(response.data)
+            registerCreator({
+                ...user,
+                id: response.data.id,
+                cart:[],
+                tags:[]
+            });
+        })
+        .catch(error => {
+            console.error(error)
+        })
         navigate("/");
     };
     return (
-        <form onSubmit={onSubmitHandler}>
+        <div className="container">
+            <h1>Register Form</h1>
+            <form onSubmit={onSubmitHandler}>
             <div className="mb-3">
                 <label className="form-label">Username</label>
                 <input type="text" className="form-control" name="username" value={user.username} onChange={onChangeHandler} />
@@ -64,8 +65,10 @@ const RegisterForm = () => {
                 <label className="form-label">Email</label>
                 <input type="email" className="form-control" name="email" value={user.email} onChange={onChangeHandler} />
             </div>
-            <button type="submit" className="btn btn-primary" onClick={onClickHandler}>Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
+        </div>
+        
     );
 };
 
