@@ -1,11 +1,11 @@
+import axios from "axios";
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import { bindActionCreators } from 'redux';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { bindActionCreators } from "redux";
 import { RecipeState } from "../../state/actions";
 import * as Creators from "../../state/creators";
-import {useNavigate} from "react-router-dom";
-import axios from 'axios';
-import { RootState} from "../../state/reducers";
+import { RootState } from "../../state/reducers";
 
 interface ChildComponentProps {
     data: RecipeState;
@@ -26,7 +26,7 @@ const CartItem: React.FC<ChildComponentProps> = (props) => {
         axios.post("http://localhost:9001/users/"+state.username, {
             ...state,
             cart: JSON.stringify(newArray),
-            tags: JSON.stringify(state.tags)
+            tags: "[]"//JSON.stringify(state.tags)
         })
         .then(response => {
             navigate("/");

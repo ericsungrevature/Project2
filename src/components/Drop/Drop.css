@@ -4,12 +4,13 @@
   justify-content: center;
   margin: 0;
   height: 150px;
-  border: 4px dashed #4aa1f3;
+  border: 4px dashed #2daa1b;
+  background-color: transparent;
 }
 
 .drop-message {
   text-align: center;
-  color: #4aa1f3;
+  color: #2daa1b;
 }
 
 .file-status {
@@ -41,7 +42,7 @@
   display: inline-block;
   vertical-align: top;
   margin-left: 50px;
-  color: #4aa1f3;
+  color: #2daa1b;
 }
 
 .file-error {

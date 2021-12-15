@@ -35,9 +35,7 @@ const Dropzone = () => {
             }else{
                 // add invalid
                 files[i]['invalid']= true;
-                setSelectedFiles(prevArray => [...prevArray, files[i]]);
-                // setSelectedFiles(prevArray => [...prevArray, files[i]]);
-                // set error message
+                setSelectedFiles(prevArray => [...prevArray, files[i]]); 
                 setErrorMessage('File is invalid');
             }
         }
