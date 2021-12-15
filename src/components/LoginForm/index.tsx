@@ -46,13 +46,13 @@ const LoginForm = () => {
                 <form onSubmit={onSubmitHandler}>
                     <div className="mb-3">
                         <label className="form-label">Username</label>
-                        <input type="text" className="form-control" name="username" value={user.username} onChange={onChangeHandler} />
+                        <input type="text" className="form-control" name="username" placeholder="Username" value={user.username} onChange={onChangeHandler} />
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Password</label>
-                        <input type="password" className="form-control" name="password" value={user.password} onChange={onChangeHandler} />
+                        <input type="password" className="form-control" name="password" placeholder="Password" value={user.password} onChange={onChangeHandler} />
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Log In</button>
                 </form>
                 <Link to="/register">If you do not have an account click here to register</Link>
             </div>

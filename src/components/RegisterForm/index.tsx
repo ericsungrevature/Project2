@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import * as Creators from "../../state/creators";
+import { FaCrown } from "react-icons/fa";
 import "./RegisterForm.css"
 
 const RegisterForm = () => {
@@ -41,41 +42,48 @@ const RegisterForm = () => {
         navigate("/");
     };
     return (
-        <div className="RegisterContainer">
-        <div className="container">
-            <h1>Register Your Account</h1>
-            <div className="row">
-            <div className="col-3"></div>
-            <div className="col-6 bg-light">
+        <div className="signupContainer">
+            <div className="containerSignupChild signupThumbnail">
+                <div className="thumbnailLogo">
+                    <h1><FaCrown/></h1>
+                </div>
+                <div className="thumbnailContent text-center">
+                    <h1 className="headingPrim">Welcome to Cook King!</h1>
+                    <h2 className="headingSecond">Are you ready to to cook?</h2>
+                </div>
+            </div>
+            <div className="containerSignupChild signupForm">
+                <h1>Register</h1>
                 <form onSubmit={onSubmitHandler}>
-                    <div className="my-3">
+                    <div className="form-group">
                         <label className="form-label">Username</label>
-                        <input type="text" className="form-control" name="username" value={user.username} onChange={onChangeHandler} />
+                        <input type="text" className="form-control" name="username" placeholder="Username" value={user.username} onChange={onChangeHandler} required/>
                     </div>
-                    <div className="mb-3">
-                        <label className="form-label">Password</label>
-                        <input type="password" className="form-control" name="password" value={user.password} onChange={onChangeHandler} />
+                    <div className="form-group">
+                        <label >Password</label>
+                        <input type="password" className="form-control" name="password" placeholder="Password" value={user.password} onChange={onChangeHandler} required/>
                     </div>
-                    <div className="mb-3">
+                    <div className="form-group">
                         <label className="form-label">First Name</label>
-                        <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={onChangeHandler} />
+                        <input type="text" className="form-control" name="firstName" placeholder="First Name" value={user.firstName} onChange={onChangeHandler} required/>
                     </div>
-                    <div className="mb-3">
-                        <label className="form-label">Last Name</label>
-                        <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={onChangeHandler} />
+                    <div className="form-group">
+                    <label className="form-label">Last Name</label>
+                    <input type="text" className="form-control" name="lastName" placeholder="Last Name" value={user.lastName} onChange={onChangeHandler} required/>
                     </div>
-                    <div className="my-3">
-                        <label className="form-label">Email</label>
-                        <input type="email" className="form-control" name="email" value={user.email} onChange={onChangeHandler} />
+                    <div className="form-group">
+                    <label className="form-label">Email</label>
+                    <input type="email" className="form-control" name="email" placeholder="email@email.com" value={user.email} onChange={onChangeHandler} required/>
                     </div>
-                    <div className="my-3">
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                    <div className="m-t-lg">
+                        <ul className="list-inline">
+                        <li>
+                            <br/><input className="btn btnForm" type="submit" value="Register" />
+                        </li>
+                        </ul>
                     </div>
-                </form>
+                </form>  
             </div>
-            <div className="col-3"></div>
-            </div>
-        </div>
         </div>
     );
 };
