@@ -30,11 +30,8 @@ const RecipeDetail = () => {
         }
     };
     return (
-        <li className="list-group-item">
+        <div className="container my-3 bg-light">
             <h3>{data.name}</h3>
-            <div className="row">
-                
-            </div>
             <div className="row">
                 <div className="col-6">
                     <img alt={data.img} />
@@ -42,35 +39,41 @@ const RecipeDetail = () => {
                 </div>
                 <div className="col-6">
                     <div className="row">
-                        <div className="col-6">
-                            <span>${data.price}</span>
+                        <div className="col-6"></div>
+                        <div className="col-2">
+                            <p>${data.price}</p>
                         </div>
-                        <div className="col-6">
+                        <div className="col-4">
                             <button type="button" className="btn btn-primary btn-sm" onClick={onClickHandler}>Add Item to Cart</button>
                         </div>
                     </div>
-                    <div className="row text-break">
+                    <div className="row text-break py-3">
                         {data.description}
                     </div>
                 </div>
             </div>
-            <div className="row">
-                <h5>Ingredients</h5>
+            <hr />
+            <div className="row container py-3">
+                <div className="col-2"></div>
+                <div className="col-8">
+                    <h5>Ingredients</h5>
+                    <ul className="list-group">
+                        {data.ingredients.map((ingredient: string) => <li className="list-group-item border-0">{ingredient}</li>)}
+                    </ul>
+                </div>
+                <div className="col-2"></div>
             </div>
-            <div className="row">
-                <ul className="list-group">
-                    {data.ingredients.map((ingredient: string) => <li className="list-group-item border-0">{ingredient}</li>)}
-                </ul>
+            <div className="row container py-3">
+                <div className="col-2"></div>
+                <div className="col-8">
+                    <h5>Directions</h5>
+                    <ol className="list-group list-group-numbered">
+                        {data.directions.map((direction: string) => <li className="list-group-item border-0">{direction}</li>)}
+                    </ol>
+                </div>
+                <div className="col-2"></div>
             </div>
-            <div className="row">
-                <h5>Directions</h5>
-            </div>
-            <div className="row">
-                <ol className="list-group list-group-numbered">
-                    {data.directions.map((direction: string) => <li className="list-group-item border-0">{direction}</li>)}
-                </ol>
-            </div>
-        </li>
+        </div>
     );
 };
 

@@ -17,6 +17,7 @@ a,
   padding-bottom: 50px;
   background-image: url(https://static.vecteezy.com/system/resources/previews/002/055/509/large_2x/fresh-ingredients-in-a-circle-free-photo.jpg);
   background-position: center;
+  background-size: cover;
 }
 
 .containerChild {
@@ -96,4 +97,9 @@ a,
 
 .uploadForm h1 {
   color: #2daa1b;
+}
+
+.form-group-d {
+  background-color: rgba(207, 248, 203, 0.856);
+  border: 2px dotted #2daa1b;
 }

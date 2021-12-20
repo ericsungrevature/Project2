@@ -37,17 +37,17 @@ const CartItem: React.FC<ChildComponentProps> = (props) => {
         <li className="list-group-item">
             <h4>Item #{props.data.id} - {props.data.name}</h4>
             <div className="row">
-                <div className="col-3">
+                <div className="col-4">
                     <img alt={props.data.img} />
                 </div>
-                <div className="col-7">
+                <div className="col-6">
                     <ul className="list-group">
                         {props.data.ingredients.map(ingredient => <li className="list-group-item">{ingredient}</li>)}
                     </ul>
                 </div>
                 <div className="col-2">
                     <p>${props.data.price}</p>
-                    <button className="btn btn-primary" onClick={onClickHandler}>Remove from Cart</button>
+                    <button className="btn btn-danger" onClick={onClickHandler}>Remove from Cart</button>
                 </div>
             </div>
         </li>

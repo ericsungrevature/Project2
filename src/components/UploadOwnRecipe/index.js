@@ -7,6 +7,7 @@ import * as Creators from "../../state/creators";
 import axios from 'axios';
 import { FaPlus, FaMinus, FaUtensils } from "react-icons/fa";
 import './Upload.css'
+import { FileUpload } from "../Drop/FileUpload";
 
 const UploadOwnRecpie = () => {
     const [recipes, setRecipes] = useState({
@@ -18,10 +19,6 @@ const UploadOwnRecpie = () => {
         directions: [],
         tags: []
     });
-
-    // const onDrop = useCallback(acceptedFile => {
-    //     console.log(acceptedFile);
-    // }, []);
 
     function onChangeHandler(event){
         setRecipes({...recipes,
@@ -88,7 +85,6 @@ const UploadOwnRecpie = () => {
         values.splice(index, 1);
         setOwnTags(values);
     }
-
     
     const dispatch = useDispatch();
     const {addRecipeCreator} = bindActionCreators(Creators, dispatch);
@@ -113,9 +109,6 @@ const UploadOwnRecpie = () => {
     return(
         <div className="uploadContainer">
             <div className="containerChild uploadThumbnail">
-                <div className="childLogo">
-                    <h1></h1>
-                </div>
                 <div className="uploadThumbnailContent text-center">
                     <h1 className="headingPrimary">You Can Upload Your Own<br/> <FaUtensils/>  Recipes! <FaUtensils/></h1>
                     <h2 className="headingSecondary">Feel good about your dish and want to share it with others?</h2><br/>
@@ -138,23 +131,21 @@ const UploadOwnRecpie = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="">Price of the Recipe</label><br/>
-                        <input type="text" className="text" name="price" placeholder="$0.00" value={recipes.price} onChange={onChangeHandler} />
+                        <input type="text" className="text" name="price" placeholder="$0.00" value={recipes.price} onChange={onChangeHandler} required/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="">Description</label><br/>
-                        <textarea className="textarea" name="description" placeholder="Description..." value={recipes.description} onChange={onChangeHandler}/>
+                        <textarea className="textarea" name="description" placeholder="Description..." value={recipes.description} onChange={onChangeHandler} required/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="">Ingredients</label><br/>
                             {
                                 ingLists.map((ingList, index) => (
                                     <div key={index}>
-                                        <input type="text" className="text" name="ingName" placeholder="Name and amount" value={ingList.ingName} onChange={event => handleInput(index, event)}/>
-                                        <div className="btn-box">
+                                        <input type="text" className="text" name="ingName" placeholder="Name and amount" value={ingList.ingName} onChange={event => handleInput(index, event)} required/>
                                             {ingLists.length !== 1 && <button className="btn btn-danger btn-sm"
                                                 onClick={() => handleRemoveIng(index)}><FaMinus/> Remove</button>}
                                             {ingLists.length - 1 === index && <button className="btn btn-success btn-sm" onClick={handleAddIng}><FaPlus/> Add</button>}
-                                        </div>
                                     </div>
                                 ))
                             }
@@ -164,12 +155,10 @@ const UploadOwnRecpie = () => {
                             {
                                 dirLists.map((dirList, index) => (
                                     <div key={index}>
-                                        <input type="text" className="text" name="dirStep" placeholder="Steps" value={dirList.dirStep} onChange={event => handleInputDir(index, event)}/>
-                                        <div className="btn-box">
+                                        <input type="text" className="text" name="dirStep" placeholder="Steps" value={dirList.dirStep} onChange={event => handleInputDir(index, event)} required/>
                                             {dirLists.length !== 1 && <button className="btn btn-danger btn-sm"
                                                 onClick={() => handleRemoveDir(index)}><FaMinus/> Remove</button>}
                                             {dirLists.length - 1 === index && <button className="btn btn-success btn-sm" onClick={handleAddDir}><FaPlus/> Add</button>}
-                                        </div>
                                     </div>
                                 ))
                             }
@@ -179,19 +168,18 @@ const UploadOwnRecpie = () => {
                             {
                                 ownTags.map((ingList, index) => (
                                     <div key={index}>
-                                        <input type="text" className="text" name="tagName" placeholder="Tag Name" value={ownTags.tagName} onChange={event => handleInputTag(index, event)}/>
-                                        <div className="btn-box">
+                                        <input type="text" className="text" name="tagName" placeholder="Tag Name" value={ownTags.tagName} onChange={event => handleInputTag(index, event)} required/>
                                             {ownTags.length !== 1 && <button className="btn btn-danger btn-sm"
                                                 onClick={() => handleRemoveTag(index)}><FaMinus/> Remove</button>}
                                             {ownTags.length - 1 === index && <button className="btn btn-success btn-sm" onClick={handleAddTag}><FaPlus/> Add</button>}
-                                        </div>
                                     </div>
                                 ))
                             }
                     </div>
                     <p className="ptitle">Drag and Drop the Image</p>
-                        <div className="content">
-                            {<Dropzone/>}
+                        <div className="form-group-d">
+                            {/* {<Dropzone/>} */}
+                            {<FileUpload/>}
                         </div><br/>
                     <input className="btn btn--form" type="submit" value="Post Recipe" />
                 </form>  

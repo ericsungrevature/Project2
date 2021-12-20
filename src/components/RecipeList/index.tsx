@@ -18,7 +18,7 @@ const RecipeList = () => {
     const [recipes, setRecipes] = useState<RecipeState[]>([]);
     const [tag, setTag] = useState("");
     const [tagList, setTagList] = useState<string[]>(state.tags);
-    const premadeTags = ["tag-a", "tag-b", "tag-c", "tag-d", "tag-e", "tag-f"];
+    const premadeTags = ["Pasta", "Taco", "Chinese", "Beef", "Pork", "Chicken"];
     const dispatch = useDispatch();
     const {addToTagsCreator, removeFromTagsCreator} = bindActionCreators(Creators, dispatch);
     useEffect(() => {
@@ -66,6 +66,7 @@ const RecipeList = () => {
     }
     return (
         <div className="row">
+            <h1 style={{fontFamily:"cursive"}}>All Recipes</h1>
             <div className="col-3">
                 <ul className="list-group list-group-horizontal" style={ulStyle}>
                     <li className="list-group-item border-0">

@@ -12,8 +12,7 @@
 .jumbotron h1,
 h2 {
   color: white;
-  /* font-weight: bold; */
-  /* text-align: center; */
+  text-align: center;
   position: relative;
   display: block;
   padding-top: 40px;
