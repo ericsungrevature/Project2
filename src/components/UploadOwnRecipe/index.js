@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Dropzone from "../Drop";
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { useNavigate } from 'react-router-dom';
@@ -178,7 +177,6 @@ const UploadOwnRecpie = () => {
                     </div>
                     <p className="ptitle">Drag and Drop the Image</p>
                         <div className="form-group-d">
-                            {/* {<Dropzone/>} */}
                             {<FileUpload/>}
                         </div><br/>
                     <input className="btn btn--form" type="submit" value="Post Recipe" />
